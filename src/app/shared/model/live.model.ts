@@ -1,3 +1,5 @@
+import {SafeResourceUrl} from '@angular/platform-browser';
+
 export class LiveModel {
   id: string;
   liveName: string;
@@ -6,4 +8,5 @@ export class LiveModel {
   liveTime: string;
   liveLink: string;
   registrationDate: string;
+  urlSafe: SafeResourceUrl;
 }
