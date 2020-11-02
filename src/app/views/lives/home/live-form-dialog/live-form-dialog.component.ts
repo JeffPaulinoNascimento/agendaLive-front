@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LiveService} from '../../../shared/service/live.service';
+import {LiveService} from '../../../../shared/service/live.service';
 import * as moment from 'moment';
 
 @Component({
@@ -35,6 +35,7 @@ export class LiveFormDialogComponent implements OnInit {
     this.rest.postLives(this.liveForm.value).subscribe(result => {});
     this.dialogRef.close();
     this.liveForm.reset();
+    window.location.reload();
   }
 
   cancel(): void {
