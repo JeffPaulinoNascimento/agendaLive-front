@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_REQUEST: 'https://agendalive.herokuapp.com/'
+  DATABASE_URL: process.env.DATABASE_URL
 };
