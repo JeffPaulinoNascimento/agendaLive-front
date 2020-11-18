@@ -4,14 +4,14 @@ import {Observable} from "rxjs";
 import {ResponsePageableModel} from "../model/responsePageable.model";
 import {LiveModel} from '../model/live.model';
 import {analyticsPackageSafelist} from '@angular/cli/models/analytics';
-import {environment} from '../../../environments/environment.prod';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LiveService {
 
-  apiUrl = environment.DATABASE_URL;
+  apiUrl = 'http://localhost:8080/lives/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,10 +19,14 @@ export class LiveService {
     })
   };
 
-  constructor( private httpCliente: HttpClient ) { }
+  constructor( private httpCliente: HttpClient ) {
+    if (environment.production) {
+      this.apiUrl = environment.URL_REQUEST;
+    }
+  }
 
   public getLivesWithFlag(flag: string): Observable<ResponsePageableModel> {
-    console.log(environment.DATABASE_URL);
+    console.log(this.apiUrl);
     return this.httpCliente.get<ResponsePageableModel>(this.apiUrl + '?flag=' + flag);
   }
 
